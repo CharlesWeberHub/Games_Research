@@ -37,7 +37,7 @@ singlesheet_df['age'] = singlesheet_df['age'].str.strip()
 print(singlesheet_df['age'])
 print(singlesheet_df.info())
 
-singlesheet_df['one'] = 7
+singlesheet_df['one'] = 14
 singlesheet_df['age'] = singlesheet_df['age'].astype('int').div(singlesheet_df['one'])
 singlesheet_df['age'] = singlesheet_df['age'].astype('int') + 1
 
