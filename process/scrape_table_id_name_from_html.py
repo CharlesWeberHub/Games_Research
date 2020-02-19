@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import pandas as pd
 
-html_file_path = '/Users/charles/Desktop/table.html'
+html_file_path = '/Users/charles/PycharmProjects/Games_Research/data/html_files/2018-12-18 to 2019-03-11.html'
 html_file = open(html_file_path, 'r', encoding='utf-8')
 html_handle = html_file.read()
 
@@ -15,7 +15,9 @@ for tr_item in all_tr:
     # print(tr_item.find('a')['href'][5:])
     # print(tr_item.find('a').text)
 
-id_name_df.to_csv('All_id_name.csv')
+print(id_name_df)
+id_name_df.to_csv('/Users/charles/PycharmProjects/Games_Research/data/steam_spy_id_name_list/2018-12-18 to 2019-03-11 all_id_name.csv')
+
 # count = 0
 # result = pd.DataFrame({},index=[0])
 # result['author'] = ''
