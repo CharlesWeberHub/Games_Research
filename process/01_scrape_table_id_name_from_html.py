@@ -16,7 +16,7 @@ for tr_item in all_tr:
     # print(tr_item.find('a').text)
 
 print(id_name_df)
-id_name_df.to_csv('/Users/charles/PycharmProjects/Games_Research/data/steam_spy_id_name_list/2018-12-18 to 2019-03-11 all_id_name.csv')
+id_name_df.to_csv('/Users/charles/PycharmProjects/Games_Research/data/steam_spy_id_name_list_from_html_table/all_id_name 2018-12-18 to 2019-03-11.csv')
 
 # count = 0
 # result = pd.DataFrame({},index=[0])

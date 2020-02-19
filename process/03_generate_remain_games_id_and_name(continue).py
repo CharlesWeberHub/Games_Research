@@ -3,7 +3,7 @@
 import os
 import pandas as pd
 
-file_path = '/Users/charles/PycharmProjects/Games_Research/data/remain_games/remain_games_name.csv'
+file_path = '/Users/charles/PycharmProjects/Games_Research/data/remain_games/remain_games_name_2018-12-18 to 2019-03-11.csv'
 
 
 # translate the name into id
@@ -11,8 +11,7 @@ def name_match_id():
     id_name_df = pd.DataFrame(columns=['ID', 'Name'])
     empty_name_df = pd.DataFrame(columns=['Name'])
     double_more_name_df = pd.DataFrame(columns=['Name'])
-    #df_idlist = pd.read_csv('/Users/charles/PycharmProjects/Games_Research/data/steam_spy_id_name_list/All_id_name.csv')
-    df_idlist = pd.read_csv('/Users/charles/PycharmProjects/Games_Research/data/steam_spy_id_name_list/2018-12-18 to 2019-03-11 all_id_name.csv')
+    df_idlist = pd.read_csv('/Users/charles/PycharmProjects/Games_Research/data/steam_spy_id_name_list/all_id_name 2018-12-18 to 2019-03-11.csv')
 
     empty_result = 0
     double_or_more_match_count = 0

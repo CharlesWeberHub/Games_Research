@@ -47,7 +47,7 @@ for i in range(len(bi_weekly_file_list)):
 
 game_name_set_df=pd.DataFrame(list(game_name_set),columns=['Game'])
 print(game_name_set_df)
-game_name_set_df.to_csv('/Users/charles/PycharmProjects/Games_Research/data/remain_games/remain_games_name.csv')
+game_name_set_df.to_csv('/Users/charles/PycharmProjects/Games_Research/data/remain_games/remain_games_name_2018-12-18 to 2019-03-11.csv')
 
 
 
