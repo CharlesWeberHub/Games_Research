@@ -35,10 +35,10 @@ for i in range(len(bi_weekly_file_list)):
     game_name_list={}
     #print(i)
     if i==0:
-        game_name_list=pd.read_csv(bi_weekly_file_path+bi_weekly_file_list[i], engine='python')['Game'].tolist()
+        game_name_list=pd.read_excel(bi_weekly_file_path+bi_weekly_file_list[i])['Game'].tolist()
         game_name_set=set(game_name_list)
     else:
-        game_name_list=pd.read_csv(bi_weekly_file_path+bi_weekly_file_list[i], engine='python')['Game'].tolist()
+        game_name_list=pd.read_excel(bi_weekly_file_path+bi_weekly_file_list[i])['Game'].tolist()
         current_game_set=set(game_name_list)
         game_name_set=game_name_set & current_game_set
 

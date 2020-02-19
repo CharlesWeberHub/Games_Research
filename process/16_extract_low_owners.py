@@ -1,95 +1,49 @@
 import os
-import pandas as pd
-import time
 import re
 
-file_path = '/Users/charles/PycharmProjects/Games_Research/data/merged_data/'
-singlesheet_df = pd.read_csv(file_path + 'singlesheet_age.csv')[
-    ['ID', 'Name', 'Time_period', 'Owners before', 'Owners after', 'Sales', 'Price', 'Max discount',
-     'Userscore (Metascore)', 'Userscore', 'Metascore', 'Release date', 'RequiredAge', 'Developer(s)', 'Publisher(s)',
-     'PlatformWindows', 'PlatformLinux',
-     'PlatformMac', 'isMajorCompany','age']]
+import pandas as pd
 
-#singlesheet_df=singlesheet_df.convert_objects(convert_numeric=True)
-print(singlesheet_df.info())
+singlesheet_df = \
+    pd.read_csv('/Users/charles/PycharmProjects/Games_Research/data/merged_data/singlesheet_discounted.csv')[
+        ['ID', 'Name', 'Time_period', 'Owners before', 'Owners after', 'Sales', 'Price', 'Max discount',
+         'Userscore (Metascore)', 'Userscore', 'Metascore', 'Release date', 'RequiredAge', 'Developer(s)',
+         'Publisher(s)',
+         'PlatformWindows', 'PlatformLinux',
+         'PlatformMac', 'isMajorCompany', 'age', 'discounted']]
 
-#print(type(singlesheet_df.groupby("ID").describe()))
-# group_df=singlesheet_df.groupby("ID").describe()
-# group_df.to_csv('temp.csv')
-# print(group_df)
-# print(group_df[['ID','Owners after.7']])
-#
-#
-# search_res_df['id'] = search_res_df.iloc[:, 0:1]
-# search_res_df['max_owner'] = search_res_df.iloc[:, 7:8]
-# # print(search_res_df['max_owner'].dtypes)
-# # search_res_df['max_owner'] = int(search_res_df['max_owner'])
-# search_res_df = search_res_df.drop([0, 1]).reset_index(drop=True)
-#
-# # search_res_df=search_res_df.sort_values(by='max_owner',ascending=False)
-#
-# # print(search_res_df[['id', 'max_owner']])
-#
-#
-# id_max = pd.DataFrame()
-# id_max['ID'] = search_res_df['id']
-# id_max['max_owner'] = search_res_df['max_owner']
-#
-#
-# id_max = id_max.convert_objects(convert_numeric=True)
-#
-#
-# id_max=id_max.sort_values(by='max_owner',ascending=False)
-# id_max['lowowner']=True
-# id_max['lowowner'][0:2239]=False
-#
-# print(id_max)
-#
-# id_max[['ID', 'max_owner', 'lowowner']].to_csv('/Users/charles/PycharmProjects/Simple_data/total_data/lowowner.csv')
+group_df = singlesheet_df[['ID', 'Owners after']].groupby("ID").describe()
+group_df['max_owner'] = group_df.iloc[:, 7:8]
 
-# singlesheet_df = pd.read_csv('/Users/charles/PycharmProjects/Simple_data/total_data/singlesheet.csv', low_memory=False)
-#
-# singlesheet_df = singlesheet_df.rename(columns={'Unnamed: 0': 'ord'})
-#
-# singlesheet_df = singlesheet_df.sort_values(by='ID', ascending=True)
-# singlesheet_df.to_csv('/Users/charles/PycharmProjects/Simple_data/total_data/singlesheet_id.csv')
+group_df.to_csv('/Users/charles/PycharmProjects/Games_Research/data/group_results/' + 'result.csv')
+group_df = pd.read_csv('/Users/charles/PycharmProjects/Games_Research/data/group_results/' + 'result.csv').drop(
+    [0, 1]).reset_index(drop=True)
+group_df = group_df.sort_values(by='max_owner', ascending=False)
+print(group_df.columns)
+id_max = pd.DataFrame()
+group_df = group_df.rename(columns={'Unnamed: 0': 'ID'})
+id_max['ID'] = group_df['ID']
+id_max['max_owner'] = group_df['max_owner']
+id_max['low_owner'] = True
+id_max.loc[id_max['max_owner'] > id_max['max_owner'][int(id_max.shape[0] * 0.2)], 'low_owner'] = False
+id_max = id_max.convert_objects(convert_numeric=True)
+id_max = id_max.sort_values(by='ID', ascending=True)
+print(id_max)
 
-# id_max_df = pd.read_csv('/Users/charles/PycharmProjects/Simple_data/total_data/lowowner.csv', low_memory=False)
-# id_max_df = id_max_df.sort_values(by='ID', ascending=True)
-# id_max_df = id_max_df.reset_index()
-# print(id_max_df.head())
-# # id_max_df.to_csv('/Users/charles/PycharmProjects/Simple_data/total_data/lowowner_id.csv')
-#
-#
-# Low_bool_list = []
-# game_now_index = 0
-# move_period = 0
-#
-# print(id_max_df[id_max_df['ID']==578080])
-#
-# for index in range(0, 602640):
-#     Low_bool_list.append(id_max_df['lowowner'][game_now_index])
-#     move_period += 1
-#     if move_period == 54:
-#         move_period = 0
-#         game_now_index += 1
-#
-# print(Low_bool_list[410944])
+Low_bool_list = []
+game_now_index = 0
+move_period = 0
 
-# singlesheet_id_df = pd.read_csv('/Users/charles/PycharmProjects/Simple_data/total_data/singlesheet_id.csv',
-#                                 low_memory=False)
-# singlesheet_id_df['low_owner'] = Low_bool_list
-#
-# print(singlesheet_id_df[singlesheet_id_df['ID'] == 578080])
-#
-# singlesheet_id_df = singlesheet_id_df.sort_values(by='ord', ascending=True)
+for index in range(0, singlesheet_df.shape[0]):
+    Low_bool_list.append(id_max['low_owner'][game_now_index])
+    move_period += 1
+    if move_period == 6:
+        move_period = 0
+        game_now_index += 1
 
-# singlesheet_id_df.to_csv('/Users/charles/PycharmProjects/Simple_data/total_data/singlesheet_ord_id.csv')
-
-# singlesheet_df = pd.read_csv('/Users/charles/PycharmProjects/Simple_data/total_data/singlesheet_ord_id.csv', low_memory=False)[
-#     ['ID', 'Name', 'Time_period', 'Owners before', 'Owners after', 'Sales', 'Price', 'Max discount',
-#      'Userscore (Metascore)', 'Userscore', 'Metascore', 'Release date', 'RequiredAge', 'Developer(s)', 'Publisher(s)',
-#      'PlatformWindows', 'PlatformLinux',
-#      'PlatformMac', 'isMajorCompany', 'age','isRetro','low_owner']]
-#
-# singlesheet_df.to_csv('/Users/charles/PycharmProjects/Simple_data/total_data/singlesheet.csv')
+singlesheet_df['low_owner'] = Low_bool_list
+singlesheet_df[['ID', 'Name', 'Time_period', 'Owners before', 'Owners after', 'Sales', 'Price', 'Max discount',
+                'Userscore (Metascore)', 'Userscore', 'Metascore', 'Release date', 'RequiredAge', 'Developer(s)',
+                'Publisher(s)',
+                'PlatformWindows', 'PlatformLinux',
+                'PlatformMac', 'isMajorCompany', 'age', 'low_owner']].to_csv(
+    '/Users/charles/PycharmProjects/Games_Research/data/merged_data/singlesheet_low_owner.csv')

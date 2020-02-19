@@ -14,6 +14,8 @@ file_path = '/Users/charles/PycharmProjects/Games_Research/data/biweekly(after_o
 #     os.rename('/Users/charles/PycharmProjects/Simple_data/static_data/'+file_name, '/Users/charles/PycharmProjects/Simple_data/static_data/'+str(number)+'.csv')
 #
 file_list = os.listdir(file_path)
+file_list.sort()
+print(file_list)
 
 whole_single_df = pd.DataFrame(
     columns=['ID', 'Name', 'Time_period', 'Owners before', 'Owners after', 'Sales', 'Price', 'Max discount',

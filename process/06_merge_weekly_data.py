@@ -24,7 +24,7 @@ def name_preparation():
 def create_frame_file():
     for i in range(0, len(file_list)):
 
-        df_steam_week = pd.read_csv(file_path + '/' + file_list[i])
+        df_steam_week = pd.read_excel(file_path + '/' + file_list[i])
         print(file_list[i])
         weekly_data_df = pd.DataFrame(columns=['ID', 'Name','Owners before','Owners after','Sales', 'Price', 'Max discount', 'Userscore (Metascore)'])
         weekly_data_df[['ID', 'Name']] = id_name
