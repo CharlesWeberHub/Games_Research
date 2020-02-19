@@ -19,4 +19,4 @@ df1[['Release date', 'RequiredAge', 'Developer(s)', 'Publisher(s)', 'PlatformWin
 
 print(df1.info())
 
-# df1.to_csv('/Users/charles/PycharmProjects/Simple_data/total_data/'+'singlesheet.csv')
+df1.to_csv('/Users/charles/PycharmProjects/Games_Research/data/merged_data/'+'singlesheet.csv')
