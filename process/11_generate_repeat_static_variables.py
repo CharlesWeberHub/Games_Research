@@ -28,7 +28,7 @@ while cut_game_index < game_size:
     repeat_static_df = pd.DataFrame(
         columns=['ID', 'Name', 'Release date', 'RequiredAge', 'Developer(s)', 'Publisher(s)', 'PlatformWindows',
                  'PlatformLinux',
-                 'PlatformMac', 'isMajorCompany', 'isRetro'])
+                 'PlatformMac', 'isMajorCompany'])
 
     if cut_game_index == 300:
         for index in range(cut_game_index, cut_game_index + 16):
