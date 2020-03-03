@@ -3,7 +3,7 @@ from datetime import datetime
 import pandas as pd
 from datetime import timedelta
 
-file_path = '/data/bi_weekly_data/merged_data/'
+file_path = '/Users/charles/PycharmProjects/Games_Research/data/bi_weekly_data/merged_data/'
 
 singlesheet_df = pd.read_csv(file_path + 'singlesheet.csv', low_memory=False)[
     ['ID', 'Name', 'Time_period', 'Owners before', 'Owners after', 'Sales', 'Price', 'Max discount',
