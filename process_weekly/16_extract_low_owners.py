@@ -4,7 +4,7 @@ import re
 import pandas as pd
 
 singlesheet_df = \
-    pd.read_csv('/data/bi_weekly_data/merged_data/singlesheet_discounted.csv')[
+    pd.read_csv('/Users/charles/PycharmProjects/Games_Research/data/bi_weekly_data/merged_data/singlesheet_discounted.csv')[
         ['ID', 'Name', 'Time_period', 'Owners before', 'Owners after', 'Sales', 'Price', 'Max discount',
          'Userscore (Metascore)', 'Userscore', 'Metascore', 'Release date', 'RequiredAge', 'Developer(s)',
          'Publisher(s)',
@@ -14,8 +14,8 @@ singlesheet_df = \
 group_df = singlesheet_df[['ID', 'Owners after']].groupby("ID").describe()
 group_df['max_owner'] = group_df.iloc[:, 7:8]
 
-group_df.to_csv('/Users/charles/PycharmProjects/Games_Research/data/group_results/' + 'result.csv')
-group_df = pd.read_csv('/Users/charles/PycharmProjects/Games_Research/data/group_results/' + 'result.csv').drop(
+group_df.to_csv('/Users/charles/PycharmProjects/Games_Research/data/bi_weekly_data/group_results/' + 'result.csv')
+group_df = pd.read_csv('/Users/charles/PycharmProjects/Games_Research/data/bi_weekly_data/group_results/' + 'result.csv').drop(
     [0, 1]).reset_index(drop=True)
 group_df = group_df.sort_values(by='max_owner', ascending=False)
 print(group_df.columns)
@@ -46,4 +46,4 @@ singlesheet_df[['ID', 'Name', 'Time_period', 'Owners before', 'Owners after', 'S
                 'Publisher(s)',
                 'PlatformWindows', 'PlatformLinux',
                 'PlatformMac', 'isMajorCompany', 'age', 'low_owner']].to_csv(
-    '/Users/charles/PycharmProjects/Games_Research/data/merged_data/singlesheet_low_owner.csv')
+    '/Users/charles/PycharmProjects/Games_Research/data/bi_weekly_data/merged_data/singlesheet_low_owner.csv')
