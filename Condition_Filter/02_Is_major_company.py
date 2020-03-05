@@ -1,6 +1,6 @@
 import pandas as pd
 
-game_features_df = pd.read_csv('/Users/charles/PycharmProjects/Games_Research/Condition_Filter/games-features(age).csv')
+game_features_df = pd.read_csv('/Users/charles/PycharmProjects/Games_Research/Condition_Filter/games-features(reputation).csv')
 major_company_file_path = '/Users/charles/PycharmProjects/Games_Research/data/monthly_data/major_company/'
 major_company = pd.read_csv(major_company_file_path + 'MajorCompany.csv')
 company_list = pd.concat(major_company.iloc[:, i] for i in range(1, major_company.shape[1]))

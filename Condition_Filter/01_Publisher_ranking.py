@@ -1,11 +1,11 @@
 import pandas as pd
 
-game_features_df = pd.read_csv('/Users/charles/PycharmProjects/Games_Research/Condition_Filter/games-features(major_company).csv')
+game_features_df = pd.read_csv('/Users/charles/PycharmProjects/Games_Research/Condition_Filter/games-features.csv')
 score_list = pd.read_csv('/Users/charles/PycharmProjects/Games_Research/Filter_HTML/score_list.csv')
 
 score_list_name=score_list['Company_Name'].str.lower().tolist()
 
-print(game_features_df.shape)
+print(game_features_df.info())
 
 reputation_df = pd.DataFrame(columns=['Reputation'])
 
@@ -18,7 +18,7 @@ for index,row in game_features_df.iterrows():
 
     is_found=0
     for list_item in score_list_name:
-        if publisher in list_item:
+        if publisher.lower() in list_item:
             is_found=1
             reputation_df = reputation_df.append([{'Reputation': score_list_name.index(list_item)+1}], ignore_index=True)
             break
