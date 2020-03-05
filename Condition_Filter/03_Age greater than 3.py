@@ -46,6 +46,9 @@ game_features_df.to_csv('/Users/charles/PycharmProjects/Games_Research/Condition
 
 game_features_df = game_features_df[game_features_df['age'] >= 3]
 
-print(game_features_df.info())
+game_features_df=game_features_df.drop(["Unnamed: 0.1.1"],axis=1)
+game_features_df=game_features_df.drop(["Unnamed: 0.1"],axis=1)
+game_features_df=game_features_df.drop(["Unnamed: 0"],axis=1)
 
+print(game_features_df.info())
 game_features_df.to_csv('/Users/charles/PycharmProjects/Games_Research/Condition_Filter/games-features(age>3).csv')
