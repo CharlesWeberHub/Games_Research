@@ -3,7 +3,8 @@ import pandas as pd
 
 all_id_name_path = '/Users/charles/PycharmProjects/Games_Research/data/monthly_data/steam_spy_id_name_list_from_html_table/all_id_name 2018-01-01 to 2020-01-26.html.csv'
 remain_file_path = '/Users/charles/PycharmProjects/Games_Research/append_market_share/remain_games_name.csv'
-result_game_path = '/Users/charles/PycharmProjects/Games_Research/append_market_share/gamedata.csv'
+result_game_path = '/Users/charles/PycharmProjects/Games_Research/append_market_share/games-features(age).csv'
+#result_game_path = '/Users/charles/PycharmProjects/Games_Research/append_market_share/gamedata.csv'
 #result_game_path = '/Users/charles/PycharmProjects/Games_Research/append_market_share/games-features(40604 rows).csv'
 
 all_id_name_df = pd.read_csv(all_id_name_path)

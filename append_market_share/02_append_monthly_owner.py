@@ -7,6 +7,6 @@ final_df=pd.read_csv(final_file_path)
 final_df=final_df.drop(["Unnamed: 0.1"],axis=1)
 final_df=final_df.drop(["Unnamed: 0"],axis=1)
 
-final_df.to_excel('/Users/charles/PycharmProjects/Games_Research/append_market_share/gamedata(owner_change).xls')
+final_df.to_excel('/Users/charles/PycharmProjects/Games_Research/append_market_share/gamedata(owner_change_without_complete_observation).xls')
 
 print(final_df.info())
