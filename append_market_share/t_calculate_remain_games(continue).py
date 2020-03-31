@@ -26,6 +26,6 @@ for i in range(len(bi_weekly_file_list)):
 
 game_name_set_df=pd.DataFrame(list(game_name_set),columns=['Game'])
 print(game_name_set_df)
-game_name_set_df.to_csv('/Users/charles/PycharmProjects/Games_Research/append_market_share/remain_games_name.csv')
+game_name_set_df.to_csv('/Users/charles/PycharmProjects/Games_Research/append_market_share/remain_games_name(6_months).csv')
 
 
