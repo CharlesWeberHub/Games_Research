@@ -2,21 +2,29 @@ import pandas as pd
 import os
 from bs4 import BeautifulSoup
 
+monthly_data_path = '/Users/charles/PycharmProjects/Games_Research/Filter_Excel_From_HTML/DATA/Calendar monthly(Source)/'
 quarterly_data_path = '/Users/charles/PycharmProjects/Games_Research/Filter_Excel_From_HTML/DATA/Calendar quarterly(Source)/'
+
+monthly_data_output_csv_path = '/Users/charles/PycharmProjects/Games_Research/Filter_Excel_From_HTML/OUTPUT_DATA/Calendar_monthly_csv/'
+monthly_data_output_excel_path = '/Users/charles/PycharmProjects/Games_Research/Filter_Excel_From_HTML/OUTPUT_DATA/Calendar_monthly_excel/'
+
 quarterly_data_output_csv_path = '/Users/charles/PycharmProjects/Games_Research/Filter_Excel_From_HTML/OUTPUT_DATA/Calendar_quarterly_csv/'
 quarterly_data_output_excel_path = '/Users/charles/PycharmProjects/Games_Research/Filter_Excel_From_HTML/OUTPUT_DATA/Calendar_quarterly_excel/'
+
+monthly_data_file_list = os.listdir(monthly_data_path)
+monthly_data_file_list.sort()
 quarterly_data_file_list = os.listdir(quarterly_data_path)
 quarterly_data_file_list.sort()
 
-for i, file in enumerate(quarterly_data_file_list):
+for i, file in enumerate(monthly_data_file_list):
     print(i, file)
-    output_filename_csv = file[55:65] + ' to ' + file[69:79] + ' (quarterly_data).csv'
-    output_filename_excel = file[55:65] + ' to ' + file[69:79] + ' (quarterly_data).xls'
+    output_filename_csv = file[55:65] + ' to ' + file[69:79] + ' (monthly_data).csv'
+    output_filename_excel = file[55:65] + ' to ' + file[69:79] + ' (monthly_data).xls'
 
     name_score_df = pd.DataFrame(
         columns=['ID', 'Game', 'Owners before', 'Owners after', 'Sales', 'Increase', 'Price', 'Max discount',
                  'Userscore (Metascore)'])
-    html_file = open(quarterly_data_path + file, 'r', encoding='utf-8')
+    html_file = open(monthly_data_path + file, 'r', encoding='utf-8')
     html_handle = html_file.read()
     soup = BeautifulSoup(html_handle, 'lxml')
     all_tr = soup.find_all('tr')
@@ -238,7 +246,7 @@ for i, file in enumerate(quarterly_data_file_list):
     name_score_df["Sales"] = name_score_df["Sales"].apply(convert_currency)
     name_score_df["Price"] = name_score_df["Price"].apply(convert_currency)
 
-    name_score_df.to_csv(quarterly_data_output_csv_path + output_filename_csv)
-    name_score_df.to_csv(quarterly_data_output_excel_path + output_filename_excel)
+    name_score_df.to_csv(monthly_data_output_csv_path + output_filename_csv)
+    name_score_df.to_csv(monthly_data_output_excel_path + output_filename_excel)
     print(name_score_df.info())
 

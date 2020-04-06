@@ -1,4 +1,7 @@
 *.csv
+*.html
+*.xls
+*.xlsx
 
 __pycache__/
 *.py[cod]
