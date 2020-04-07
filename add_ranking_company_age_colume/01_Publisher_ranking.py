@@ -1,6 +1,6 @@
 import pandas as pd
 
-game_features_df = pd.read_csv('/Users/charles/PycharmProjects/Games_Research/Condition_Filter/games-features.csv')
+game_features_df = pd.read_csv('/Users/charles/PycharmProjects/Games_Research/data/game_feature/games-features(40604 rows & add release date ).csv')
 score_list = pd.read_csv('/Users/charles/PycharmProjects/Games_Research/Filter_HTML/score_list.csv')
 
 score_list_name=score_list['Company_Name'].str.lower().tolist()
