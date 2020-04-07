@@ -28,6 +28,7 @@ for index, row in remain_game_id_df.iterrows():
         remain_games_features_df = remain_games_features_df.append(double_match)
         count += 1
 
+print(count)
 
 remain_games_features_df.to_csv('/Users/charles/PycharmProjects/Games_Research/append_monthly_quarterly/test.csv')
 
@@ -40,10 +41,10 @@ for i in range(len(monthly_file_list)):
     for index, row in remain_games_features_df.iterrows():
         id_match = month_data_df.loc[month_data_df['ID'] == row['QueryID']]
         current_index = remain_games_features_df[remain_games_features_df['QueryID'] == row['QueryID']].index[0]
-        print('ID:  '+ str(row['QueryID']))
-        print('Current_index: '+ str(current_index))
-        print('colume_name: '+ str(colume_name))
-        print('Sales: '+ str(id_match))
+        # print('ID:  '+ str(row['QueryID']))
+        # print('Current_index: '+ str(current_index))
+        # print('colume_name: '+ str(colume_name))
+        # print('Sales: '+ str(id_match))
         remain_games_features_df.loc[current_index, colume_name] = id_match['Sales'].iloc[0]
 
 # # remain_games_features_df=remain_games_features_df.drop(['SupportURL'],axis=1)

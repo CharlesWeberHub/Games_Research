@@ -36,7 +36,7 @@ game_features_df['age'] = game_features_df['age'].str.strip()
 
 print(game_features_df.info())
 
-game_features_df['one'] = 30
+game_features_df['one'] = 91
 game_features_df['age'] = game_features_df['age'].astype('int').div(game_features_df['one'])
 game_features_df['age'] = game_features_df['age'].astype('int') + 1
 
