@@ -2,7 +2,7 @@ import pandas as pd
 import os
 import copy
 
-monthly_data_path = '/Users/charles/PycharmProjects/Games_Research/Filter_Excel_From_HTML/OUTPUT_DATA/Calendar_monthly_csv/'
+monthly_data_path = '/Users/charles/PycharmProjects/Games_Research/Filter_Excel_From_HTML/OUTPUT_DATA/Calendar_quarterly_csv/'
 #game_features_path = '/Users/charles/PycharmProjects/Games_Research/data/game_feature/games-features(40604 rows).csv'
 game_features_path = '/Users/charles/PycharmProjects/Games_Research/add_ranking_company_age_colume/games-features(age).csv'
 
@@ -55,6 +55,6 @@ print('max_count: ' + str(max_count))
 
 name=['ID']
 game_id_list_max_df=pd.DataFrame(columns=name,data=game_id_list_max)
-game_id_list_max_df.to_csv('/Users/charles/PycharmProjects/Games_Research/append_monthly_quarterly/final(6).csv')
+game_id_list_max_df.to_csv('/Users/charles/PycharmProjects/Games_Research/append_monthly_quarterly/final(6_q).csv')
 
 
