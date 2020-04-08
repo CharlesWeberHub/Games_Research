@@ -27,5 +27,5 @@ month_6_df['discounted(boolean)']= month_6_df['max_discounted_percent(%)'] > 0
 
 #month_6_df.to_csv('/Users/charles/PycharmProjects/Games_Research/append_monthly_quarterly/new_form(6_months_split_discount).csv')
 #month_6_df.to_csv('/Users/charles/PycharmProjects/Games_Research/append_monthly_quarterly/new_form(12_months_split_discount).csv')
-month_6_df.to_csv('/Users/charles/PycharmProjects/Games_Research/append_monthly_quarterly/new_form(12_quarters_split_discount).csv')
+month_6_df.to_excel('/Users/charles/PycharmProjects/Games_Research/append_monthly_quarterly/new_form(6_quarters_split_discount).xls')
 
