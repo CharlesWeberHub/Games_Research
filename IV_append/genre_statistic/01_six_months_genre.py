@@ -10,6 +10,8 @@ genre_file_path = '/Users/charles/PycharmProjects/Games_Research/IV_append/genre
 genre_data_file_list = os.listdir(genre_file_path)
 genre_data_file_list.sort()
 
+
+
 genre_list = ['Action', 'Adventure', 'Early+Access', 'Ex+Early+Access', 'Free', 'Indie', 'Massively', 'RPG',
               'Simulation', 'Sports', 'Strategy', 'Others']
 
@@ -21,7 +23,10 @@ monthly_data_file_list = monthly_data_file_list[15:21]
 # print(monthly_data_file_list)
 # print(genre_data_file_list)
 
+# store the whole genre data
 genre_list_dic = {}
+
+# the statistic of these months data
 genre_statis_dic = {}
 
 id_genre_statis_df = pd.DataFrame(columns=genre_list)
