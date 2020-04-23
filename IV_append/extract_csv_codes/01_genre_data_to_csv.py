@@ -15,7 +15,7 @@ genre_csv_list.sort()
 print(genre_csv_list)
 
 for i in range(0, len(genre_file_list)):
-    output_file=output_path + genre_csv_list[i]
+    output_file = output_path + genre_csv_list[i]
 
     print(output_file)
     c_genre_csv_df = pd.read_csv(genre_excel_output_path + genre_csv_list[i])
@@ -48,7 +48,7 @@ for i in range(0, len(genre_file_list)):
     # how many items we have
     _count = 0
     # the count we need to have
-    print()
+    # print()
 
     while _count < c_genre_csv_df.shape[0]:
         td_all_0 = all_tr[current_index].find_all('td')
@@ -62,13 +62,14 @@ for i in range(0, len(genre_file_list)):
 
         for i, child in enumerate(td_all_0):
             # print(i, 'tt--', child)
+            is_stop_first=False
             if i == 1:
                 try:
                     _hf = child.find('a')['href'].strip()
                 except:
                     print('except')
-                    if _count > 0:
-                        current_index += 1
+                    current_index += 1
+                    is_stop_first=True
                     continue
 
                 if len(_hf) <= 25:
@@ -79,6 +80,9 @@ for i in range(0, len(genre_file_list)):
                 _id = _hf[25:]
                 all_in_span = child.find_all('span', class_='html-attribute-value')
                 _game = all_in_span[0].get_text()
+
+        if is_stop_first:
+            continue
 
         current_index += 1
 
