@@ -20,7 +20,7 @@ genre_list = ['Action', 'Adventure', 'Early+Access', 'Ex+Early+Access', 'Free', 
 
 monthly_data_file_list = monthly_data_file_list[15:21]
 
-# print(monthly_data_file_list)
+# print(monthly_data_file_list)xls
 # print(genre_data_file_list)
 
 # store the whole genre data
